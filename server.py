@@ -144,7 +144,7 @@ def do_add():
   now = datetime.datetime.now()
   today = "2018-"+process_t(str(now.month))+"-"+process_t(str(now.day))
   tmp = now+datetime.timedelta(days=1)
-  tomorrow = "2018"+process_t(str(tmp.month))+"-"+process_t(str(tmp.day))
+  tomorrow = "2018-"+process_t(str(tmp.month))+"-"+process_t(str(tmp.day))
   
   command1 = "select * from "+location+" where start>'"+today+"' and end<'"+tomorrow+"' and club = '"+club+"'"
   
@@ -160,13 +160,14 @@ def do_add():
     context = dict(data = "Please input a day that is later than today", data1 = today)
     return render_template("error.html", **context)
 
-  command2 = "select * from "+location+" where hour(start)<"+end1+" or hour(end)>"+start1
+  command2 = "select * from "+location+" where hour(end)<="+end1+" and hour(end)>"+start1+" or hour(start)>="+start1+" and hour(start)<"+end1+" or hour(end)>="+end1+" and hour(start)<="+start1+" and start>'"+today+"' and end<'"+tomorrow+"'"
   room = g.conn.execute(command2)
+  print command2
   j=0
   for index in room:
     j+=1
-  if j>3:
-    context = dict(data = "There're no available rooms in this time slots, plz choose another places or time slots.")
+  if j>=3:
+    context = dict(data = "There're no available rooms in this time slots, We apologize for the inconvenience.")
     return render_template("error.html", **context)
 
   start_h = "2018"+'-'+process_t(month)+'-'+process_t(day1)+" "+process_t(start1)
