@@ -1,0 +1,86 @@
+<html>
+    <style>
+	div{
+	    border-radius: 5px;
+    	    background-color: #f2f2f2;
+    	    padding: 20px;
+ 	    position: absolute; 
+	    left:250px; top: 160px;
+	    height: 350px; width: 65%; 
+	}
+	h4{
+	    font-size: 280%; 
+            color:DeepSkyBlue
+	}
+	h4 span{
+	    color:Brown;
+	}
+	input[type=text], select {
+    	    width: 100%;
+    	    padding: 7px 3px;
+    	    margin: 0 0;
+    	    display: inline-block;
+    	    border: 1px solid #ccc;
+    	    border-radius: 4px;
+    	    box-sizing: border-box;
+   	}
+	p.class1{
+	    position: absolute; 
+            left:20px; top: 340px; 
+	}
+	p.class2{
+	    position: absolute;
+	    left:30px; top:250px;
+	}
+    	p.class3{
+            position: absolute;
+            left:620px; top:580px;
+        }	
+	p.class4{
+	    position: absolute;
+	    left:840;
+	    font-size: 30px;
+	}
+    </style>
+
+    <body>
+	<p class="class4"><a href="/add">Book your club events</a></p>
+	<div>
+    	    <h4>Find your <span>Club Events</span></h4>
+    	    <form method="POST" action="/do_query">
+		
+		<label for="location"> &nbsp; Location</label>
+		<br>
+    	        <select id="location" name="location">
+      		    <option value="Auditorium">Auditorium</option>
+      		    <option value="Gymnastic_Room">Gymnastic Room</option>
+      		    <option value="Banard_Hall">Banard Hall</option>
+		    <option value="Uris_Library">Uris Library</option>
+		    <option value="Basketball_Field">Basketball Field</option>
+		    <option value="Law_Building">Law Building</option>
+		    <option value="Business_Center">Business Center</option>
+		    <option value="Dance_Center">Dance center</option>
+    		</select>
+		<br><br>
+
+		<label for="date"> &nbsp; Date</label>
+                <br>
+                <select id="date" name="date">
+                    <option value="today">Today</option>
+                    <option value="tomorrow">Until Tomorrow</option>
+                    <option value="next one week">Until Next one week</option>
+                    <option value="next one month">Until Next one month</option>
+                </select>
+		<br><br>			 
+
+		<input type="text"  name = "events" placeholder="Search events or contents">
+	
+		<p class="class1"><input type="submit" value="Go" style="width:100px; height:50px;"></p>
+	    </form>
+
+	</div>
+    	<p class="class3"><a href="https://github.com/kk126203/IMDB_Search_Engine"><img src="https://assets-cdn.github.com/images/modules/open_graph/github-mark.png" width="65"; height="35"></a></p>
+
+
+    </body>
+</html>

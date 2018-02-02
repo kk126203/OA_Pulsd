@@ -1,0 +1,109 @@
+<html>
+    <head>
+    	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    </head>
+    <style>
+	input[type=text], select {
+ 	    position: absolute;
+	    left:60px;
+	    top: 7px;
+            width: 40%;
+            padding: 5px 3px;
+            margin: 0 0;
+            display: inline-block;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+	input[type=submit]{
+	    position: absolute;
+            left:1000px; top: 7px;
+	    width:60px;
+	    height:30px;
+	}
+	img.class1{
+	    position: absolute;
+            left:10px; top: 7px;
+	}	
+	div.class1{
+	     position: absolute;
+             left:50px; top: 90px;
+	     width:50%;
+	}
+	div.class2{
+	    border-radius: 5px;
+            background-color: #f2f2f2;
+            padding: 20px;
+	}
+	img.class2{
+             position: absolute;
+             left:800px; top: 75px;
+        }
+	select.class1{
+		position: absolute;
+		left: 580px;
+		width:15%; 
+		height:30px;
+	}
+	select.class2{
+                position: absolute;
+                left: 780px;
+                width:15%; 
+                height:30px;
+        }	
+	h5{
+		position: absolute;
+		top: 50px;
+		left : 52px;
+	}
+    </style>
+    <body>
+	<div class="navbar-wrapper">
+          <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+            <div class="container">
+	      <a href="/"><img class="class1" src="http://www.livemint.com/rf/Image-621x414/LiveMint/Period1/2013/03/15/Photos/house--621x414.jpg" height="35" width="40"></a>
+	      <form method="POST" action="/do_query">
+                <input type="text"  name = "events" placeholder=""Search events or contents"">
+		<select id="location" name="location" class="class1">
+                    <option value="Auditorium">Auditorium</option>
+                    <option value="Gymnastic_Room">Gymnastic Room</option>
+                    <option value="Banard_Hall">Banard Hall</option>
+                    <option value="Uris_Library">Uris Library</option>
+                    <option value="Basketball_Field">Basketball Field</option>
+                    <option value="Law_Building">Law Building</option>
+                    <option value="Business_Center">Business Center</option>
+                    <option value="Dance_Center">Dance center</option>
+                </select>		
+		<select id="date" name="date" class="class2">
+                    <option value="today">Today</option>
+                    <option value="tomorrow">Until Tomorrow</option>
+                    <option value="next one week">Until Next one week</option>
+                    <option value="next one month">Until Next one month</option>
+                </select>		
+
+                <input type="submit" value="Go">
+     	      </form>		
+            </div>
+          </div>
+    	</div>
+
+        <h5>For the search results of {{data2}}, there are {{data3}} booked club events, and the searching took {{data4}} seconds </h5>
+	<div class="class1">
+	    <img class="class2" src="{{data5}}" alt="minions" height="420" width="420">
+		{% for item in data %}
+			<div class="class2">
+			<p>School Club</p>
+			<font size="5"><b>{{item[2]}}</b></font><br><br>
+			<p>Start</p>
+			<font size="5"><b>{{item[0]}}</b></font><br><br>
+			<p>End</p>
+			<font size="5"><b>{{item[1]}}</b></font><br><br>
+			<p>Description</p>
+			<font size="5"><b>{{item[3]}}</b></font><br><br>
+			</div><br>
+			
+    	 	{% endfor %}	
+	</div>    
+
+    </body>
+</html>
